@@ -1,5 +1,6 @@
 package com.test.medicineproject;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.test.medicineproject.Search.SearchDetailActivity;
 
 public class MedicineListViewHolder extends RecyclerView.ViewHolder{
     TextView tv_medicineTitle;
@@ -21,6 +23,15 @@ public class MedicineListViewHolder extends RecyclerView.ViewHolder{
         tv_medicineTitle = itemView.findViewById(R.id.tv_medicine_title);
         tv_medicineCompany = itemView.findViewById(R.id.tv_medicine_company);
         iv_medicineImage = itemView.findViewById(R.id.iv_medicine_image);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( v.getContext(), SearchDetailActivity.class);
+                intent.putExtra("medicine_info", tv_medicineTitle.toString());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     public final void bind(MedicineData myData) {

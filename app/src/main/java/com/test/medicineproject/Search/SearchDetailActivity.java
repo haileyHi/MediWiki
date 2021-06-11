@@ -1,7 +1,17 @@
 package com.test.medicineproject.Search;
 
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SearchDetailActivity extends AppCompatActivity {
+import com.test.medicineproject.R;
 
+public class SearchDetailActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mediinfo);
+
+    }
 }

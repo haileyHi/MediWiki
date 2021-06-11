@@ -51,26 +51,34 @@ public class SearchFragment extends Fragment {
 //        medicineList.add(new MedicineData("탁센", "가나다", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7TVi20iFw3BOZAeb3XB2M1er8EuFbzrFL7A&usqp=CAU"));
 
         // 리사이클러뷰에 adapter 적용
-//        recyclerView = (RecyclerView) this.findViewById(R.id.rv_medicine_list);
-//        adapter = new MedicineListAdapter(medicineList);
-//        recyclerView.setAdapter(adapter);
-//
-//        //임시 데이터 넣기.
-//        loadData();
-//        searchText = (EditText) findViewById(R.id.et_search);
-//
-//        //버튼 클릭 리스너 적용하기
-//        searchButton = (ImageView) findViewById(R.id.iv_search_button);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_medicine_list);
+        adapter = new MedicineListAdapter(medicineList);
+        recyclerView.setAdapter(adapter);
+
+        //임시 데이터 넣기.
+        loadData(address + "?serviceKey=" + key + "&numOfRows=30" + "&type=json");
+        searchText = (EditText) view.findViewById(R.id.et_search);
+
+        //버튼 클릭 리스너 적용하기
+        searchButton = (ImageView) view.findViewById(R.id.iv_search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Log.d(">>> onclick 확인 ", "검색 버튼 눌림!");
+                final String keyword = searchText.getText().toString();
+                loadData(address + "?serviceKey=" + key + "&itemName=" + keyword + "&numOfRows=10" + "&type=json");
+            }
+        });
 
         return view;
     }
 
-    private void loadData(){
+    private void loadData(final String urlAddress){
         new Thread(){
             @Override
             public void run() {
                 medicineList.clear();
-                String urlAddress = address + "?serviceKey=" + key + "&numOfRows=30" + "&type=json";
+//                String urlAddress = address + "?serviceKey=" + key + "&numOfRows=30" + "&type=json";
                 try {
                     URL url = new URL(urlAddress);
 
@@ -106,7 +114,7 @@ public class SearchFragment extends Fragment {
                         medicineList.add(new MedicineData(medicineName, medicineCompany, medicineImage));
                     }
 
-                    runOnUiThread(new Runnable() {
+                    getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             adapter.notifyDataSetChanged();
@@ -126,4 +134,6 @@ public class SearchFragment extends Fragment {
         }.start();
         adapter.notifyDataSetChanged();
     }
+
+
 }
