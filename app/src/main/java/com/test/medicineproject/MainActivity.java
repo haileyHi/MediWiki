@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,12 +25,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     //api key 나중에 제거하기
-    private String key;
+    private String key = "3rkNwN1XWQWLf9YXRoB%2FWJ8wjGN7qZDfCTpG7ffeeOpYD6AsPYrNG0H8bpqxwLUtpwrvTqx6rc5MO%2BPH63dd%2Fg%3D%3D";
     private String address = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList";
     private RecyclerView recyclerView;
     private ArrayList<MedicineData> medicineList;
     private EditText searchText;
     private ImageView searchButton;
+    MedicineListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +46,24 @@ public class MainActivity extends AppCompatActivity {
 
         // 리사이클러뷰에 adapter 적용
         recyclerView = (RecyclerView) findViewById(R.id.rv_medicine_list);
-        MedicineListAdapter adapter = new MedicineListAdapter(medicineList);
+        adapter = new MedicineListAdapter(medicineList);
         recyclerView.setAdapter(adapter);
+
+        searchText = (EditText) findViewById(R.id.et_search);
 
         //버튼 클릭 리스너 적용하기
         searchButton = (ImageView) findViewById(R.id.iv_search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                Log.d(">>> onclick 확인 ", "검색 버튼 눌림!");
+                String keyword = searchText.getText().toString();
                 new Thread(){
                     @Override
                     public void run() {
                         medicineList.clear();
-                        String urlAddress = address + "?serviceKey=" + key;
+                        String urlAddress = address + "?serviceKey=" + key + "&numOfRows=10" + "&type=json";
                         try {
                             URL url = new URL(urlAddress);
 
@@ -71,22 +80,33 @@ public class MainActivity extends AppCompatActivity {
 
                             String jsonData = buffer.toString();
 
+                            Gson gson = new Gson();
                             //jsonData를 JSONObject로
                             JSONObject obj = new JSONObject(jsonData);
                             //obj의 items를 JSONObject로 추출
-                            JSONObject itemResult = (JSONObject) obj.get("body");
+                            JSONObject body = (JSONObject) obj.get("body");
                             // itemResult의 JSONObject에서 JSONArray추출
-                            JSONArray itemsList = (JSONArray) itemResult.get("items");
+                            JSONArray itemsList = (JSONArray) body.get("items");
 
+                            Log.d("data 확인", ((JSONObject) itemsList.get(0)).getString("entpName"));
                             for (int i = 0; i < itemsList.length(); i++) {
                                 JSONObject temp = itemsList.getJSONObject(i);
 
                                 String medicineName = temp.getString("itemName");
                                 String medicineCompany = temp.getString("entpName");
                                 String medicineImage = temp.getString("itemImage");
+                                medicineList.add(new MedicineData(medicineName, medicineCompany, medicineImage));
                             }
 
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+
                         } catch (MalformedURLException e) {
+                            Log.d("URL 문제", "URL이 잘못 되었다.");
                             e.printStackTrace();
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -96,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 };
-
+                adapter.notifyDataSetChanged();
             }
         });
     }
