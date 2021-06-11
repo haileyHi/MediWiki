@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/iv_medicine_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/sample_pill"
+        android:scaleType="centerCrop"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:id="@+id/tv_medicine_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:lineSpacingExtra="2dp"
+        android:maxLength="17"
+        android:maxLines="1"
+        android:text="타이레놀"
+        android:textFontWeight="700"
+        style="@style/title_text"
+        app:layout_constraintBottom_toTopOf="@id/tv_medicine_company"
+        app:layout_constraintStart_toEndOf="@id/iv_medicine_image"
+        app:layout_constraintTop_toTopOf="@id/iv_medicine_image" />
+
+    <TextView
+        android:id="@+id/tv_medicine_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="얀센"
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="@id/tv_medicine_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_medicine_title"
+        app:layout_constraintBottom_toBottomOf="@id/iv_medicine_image"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
