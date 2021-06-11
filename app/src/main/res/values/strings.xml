@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MedicineProject</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_setting">Setting</string>
+
 </resources>
