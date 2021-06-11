@@ -26,6 +26,11 @@ public class MedicineListViewHolder extends RecyclerView.ViewHolder{
     public final void bind(MedicineData myData) {
         tv_medicineTitle.setText(myData.getMedicineTitle());
         tv_medicineCompany.setText(myData.getMedicineCompany());
-        Glide.with(itemView).load(myData.getMedicineImage()).into(iv_medicineImage);
+        if (myData.getMedicineImage().equals("null")) {
+            Glide.with(itemView).load(R.drawable.medicine_null).into(iv_medicineImage);
+        }else{
+            Glide.with(itemView).load(myData.getMedicineImage()).into(iv_medicineImage);
+        }
+
     }
 }
