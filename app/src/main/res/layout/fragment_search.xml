@@ -14,7 +14,7 @@
         android:paddingHorizontal="10dp"
         android:inputType="text"
         android:layout_width="match_parent"
-        android:hint="찾고싶은 약을 입력해주세요."
+        android:hint="약 이름/성분명 검색"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/item_medicine"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:overScrollMode="never"
+        android:overScrollMode="always"
         android:clipToPadding="false"
         android:paddingBottom="30dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

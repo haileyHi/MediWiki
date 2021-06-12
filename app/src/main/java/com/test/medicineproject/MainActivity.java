@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowCustomEnabled(true);  // custom하기 위해
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setElevation(5F);
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fl_main, searchFragment).commitAllowingStateLoss();
+        transaction.replace(R.id.fl_main, homeFragment).commitAllowingStateLoss();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
 
