@@ -2,6 +2,7 @@ package com.test.medicineproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private SearchFragment searchFragment = new SearchFragment();
     private HomeFragment homeFragment = new HomeFragment();
     private SettingFragment settingFragment = new SettingFragment();
+    private Toolbar toolbar;
 
     //api key 나중에 제거하기
     private String key = "3rkNwN1XWQWLf9YXRoB%2FWJ8wjGN7qZDfCTpG7ffeeOpYD6AsPYrNG0H8bpqxwLUtpwrvTqx6rc5MO%2BPH63dd%2Fg%3D%3D";
@@ -53,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);  // custom하기 위해
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);// 뒤로가기 버튼
+        toolbar.setElevation(5F);
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fl_main, searchFragment).commitAllowingStateLoss();

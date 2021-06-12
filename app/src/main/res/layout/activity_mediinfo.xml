@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +11,188 @@
         android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="15dp"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_itemName">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="250dp">
+
+            <TextView
+                android:id="@+id/tv_efcyTitle"
+                style="@style/hint_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이 약의 효능은 무엇입니까?"
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_itemName"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/tv_efcyQesitm"
+                style="@style/explain_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:text="이 약은 심근경색, 뇌경색, 불안정형 협심증에서 혈전 생성 억제와..."
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_efcyTitle"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/tv_useMethodQesitm_Title"
+                style="@style/hint_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="이 약은 어떻게 사용합니까?"
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_efcyQesitm"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/tv_useMethodQesitm"
+                style="@style/explain_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:text="성인은 1회 1정, 1일 1회 복용합니다.."
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_useMethodQesitm_Title"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/tv_atpnWarnQesitm_Title"
+                style="@style/hint_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="이 약을 사용하기 전에 반드시 알아야 할 내용은 무엇입니까?"
+                app:layout_constraintEnd_toEndOf="@id/tv_itemName"
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_useMethodQesitm"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/tv_atpnWarnQesitm"
+                style="@style/explain_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:text="매일 세잔 이상 정기적 음주자가 이 약 또는 다른 해열진통제를 복용할 때는..."
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_atpnWarnQesitm_Title"
+                tools:ignore="NotSibling" />
+
+
+            <TextView
+                android:id="@+id/atpnQesitm_Title"
+                style="@style/hint_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="이 약의 사용상 주의사항은 무엇입니까??"
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_atpnWarnQesitm"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/tv_atpnQesitm"
+                style="@style/explain_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:text="이 약 또는 다른 살리실산제제, 진통제, 소염제, 항류마티스제에 대한 과민증 환자..."
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/atpnQesitm_Title"
+                tools:ignore="NotSibling" />
+
+
+            <TextView
+                android:id="@+id/intrcQesitm_Title"
+                style="@style/hint_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="이 약을 사용하는 동안 주의해야 할 약 또는 음식은 무엇입니까?"
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_atpnQesitm"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/tv_intrcQesitm"
+                style="@style/explain_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:text="다른 비스테로이드성 소염진통제 및 살리실산 제제, 일주일 동안 메토트렉세이트 15밀리그람..."
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/intrcQesitm_Title"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/seQesitm_Title"
+                style="@style/hint_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="이 약은 어떤 이상반응이 나타날 수 있습니까?"
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_intrcQesitm"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/tv_seQesitm"
+                style="@style/explain_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:text="쇽 증상(예: 호흡곤란, 전신조홍, 혈관부종, 두드러기), 천식발작, 과민증(홍반)..."
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/seQesitm_Title"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/depositMethodQesitm_Title"
+                style="@style/hint_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="이 약은 어떻게 보관해야 합니까?"
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/tv_seQesitm"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/tv_depositMethodQesitm"
+                style="@style/explain_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:text="습기를 피해 실온에서 보관하십시오."
+                app:layout_constraintStart_toStartOf="@id/tv_itemName"
+                app:layout_constraintTop_toBottomOf="@id/depositMethodQesitm_Title"
+                tools:ignore="NotSibling" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/tv_itemName"
@@ -24,48 +206,4 @@
         app:layout_constraintEnd_toEndOf="@id/iv_itemImage"
         app:layout_constraintStart_toStartOf="@id/iv_itemImage"
         app:layout_constraintTop_toBottomOf="@id/iv_itemImage" />
-
-    <TextView
-        android:id="@+id/tv_efcyTitle"
-        style="@style/hint_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="이 약의 효능은 무엇입니까?"
-        app:layout_constraintStart_toStartOf="@id/tv_itemName"
-        app:layout_constraintTop_toBottomOf="@id/tv_itemName" />
-
-    <TextView
-        android:id="@+id/tv_efcyQesitm"
-        style="@style/explain_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="10dp"
-        android:text="이 약은 심근경색, 뇌경색, 불안정형 협심증에서 혈전 생성 억제와..."
-        app:layout_constraintStart_toStartOf="@id/tv_itemName"
-        app:layout_constraintTop_toBottomOf="@id/tv_efcyTitle" />
-
-    <TextView
-        android:id="@+id/tv_useMethodQesitm_Title"
-        style="@style/hint_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="이 약은 어떻게 사용합니까?"
-        app:layout_constraintStart_toStartOf="@id/tv_itemName"
-        app:layout_constraintTop_toBottomOf="@id/tv_efcyQesitm" />
-
-    <TextView
-        android:id="@+id/tv_useMethodQesitm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="성인은 1회 1정, 1일 1회 복용합니다.."
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="25dp"
-        style="@style/explain_text"
-        app:layout_constraintStart_toStartOf="@id/tv_itemName"
-        app:layout_constraintTop_toBottomOf="@id/tv_useMethodQesitm_Title" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

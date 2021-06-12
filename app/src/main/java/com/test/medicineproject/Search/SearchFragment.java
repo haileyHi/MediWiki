@@ -101,7 +101,7 @@ public class SearchFragment extends Fragment {
                     //obj의 items를 JSONObject로 추출
                     JSONObject body = (JSONObject) obj.get("body");
                     // itemResult의 JSONObject에서 JSONArray추출
-                    JSONArray itemsList = (JSONArray) body.get("items");
+                    JSONArray itemsList = (JSONArray) body.getJSONArray("items");
 
                     Log.d("data 확인", ((JSONObject) itemsList.get(0)).getString("entpName"));
                     for (int i = 0; i < itemsList.length(); i++) {
@@ -112,6 +112,9 @@ public class SearchFragment extends Fragment {
                         String medicineImage = temp.getString("itemImage");
 
                         medicineList.add(new MedicineData(medicineName, medicineCompany, medicineImage));
+                    }
+                    if (getActivity() == null) {
+                        return;
                     }
 
                     getActivity().runOnUiThread(new Runnable() {
