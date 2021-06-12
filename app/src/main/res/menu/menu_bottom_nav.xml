@@ -12,8 +12,8 @@
         android:title="@string/title_search" />
 
     <item
-        android:id="@+id/navigation_setting"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:title="@string/title_setting" />
+        android:id="@+id/navigation_alarm"
+        android:icon="@drawable/ic_baseline_alarm_24"
+        android:title="@string/title_alarm" />
 
 </menu>

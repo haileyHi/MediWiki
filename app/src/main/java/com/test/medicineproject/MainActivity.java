@@ -3,34 +3,20 @@ package com.test.medicineproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
 import com.test.medicineproject.Home.HomeFragment;
 import com.test.medicineproject.Search.SearchFragment;
-import com.test.medicineproject.Settings.SettingFragment;
+import com.test.medicineproject.Alarm.AlarmFragment;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SearchFragment searchFragment = new SearchFragment();
     private HomeFragment homeFragment = new HomeFragment();
-    private SettingFragment settingFragment = new SettingFragment();
+    private AlarmFragment alarmFragment = new AlarmFragment();
     private Toolbar toolbar;
 
     //api key 나중에 제거하기
@@ -53,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -80,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_search:
                         transaction.replace(R.id.fl_main, searchFragment).commitAllowingStateLoss();
                         break;
-                    case R.id.navigation_setting:
-                        transaction.replace(R.id.fl_main, settingFragment).commitAllowingStateLoss();
+                    case R.id.navigation_alarm:
+                        transaction.replace(R.id.fl_main, alarmFragment).commitAllowingStateLoss();
                         break;
                 }
                 return true;
