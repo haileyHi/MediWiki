@@ -29,6 +29,6 @@
     </style>
     <style name="title_app" parent="Widget.AppCompat.TextView">
         <item name="font">@font/fontfamily_title</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 </resources>
