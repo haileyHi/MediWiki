@@ -43,5 +43,5 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:overScrollMode="always"
         android:clipToPadding="false"
-        android:paddingBottom="30dp"/>
+        android:paddingBottom="100dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
